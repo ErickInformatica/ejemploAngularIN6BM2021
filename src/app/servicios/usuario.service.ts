@@ -16,7 +16,7 @@ export class UsuarioService {
     this.url = GLOBAL.url;
   }
 
-  registro(usuario: Usuario): Observable<any>{
+  registro(usuario): Observable<any>{
     let params = JSON.stringify(usuario);
 
     return this._http.post(this.url + '/registrarUsuario', params, { headers: this.headersVariable })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from '../../modelos/usuario.model';
 import { UsuarioService } from "../../servicios/usuario.service";
 @Component({
@@ -8,12 +9,14 @@ import { UsuarioService } from "../../servicios/usuario.service";
   providers: [UsuarioService]
 })
 export class RegistroComponent implements OnInit {
-  public usuario: Usuario;
+  public user: Usuario;
 
 
 
-  constructor(private _usuarioService: UsuarioService) {
-    this.usuario = new Usuario("","","","","","","");
+  constructor(
+    private _usuarioService: UsuarioService,
+    private _router: Router) {
+    this.user = new Usuario("","","","","","","");
    }
 
   ngOnInit(): void {
@@ -21,12 +24,12 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar(){
-    console.log(this.usuario)
+    console.log(this.user)
 
-    this._usuarioService.registro(this.usuario).subscribe(
+    this._usuarioService.registro(this.user).subscribe(
       response=>{
         console.log(response);
-
+        this._router.navigate(['/login'])
       },
       error=>{
         console.log(<any>error);
