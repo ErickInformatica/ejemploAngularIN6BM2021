@@ -10,6 +10,7 @@ import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { EncuestasComponent } from './componentes/encuestas/encuestas.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     RegistroComponent,
     NavbarComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    EncuestasComponent
   ],
   imports: [
     BrowserModule,

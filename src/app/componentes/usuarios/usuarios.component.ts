@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/modelos/usuario.model';
 import { UsuarioService } from "../../servicios/usuario.service";
 
 @Component({
@@ -9,7 +10,10 @@ import { UsuarioService } from "../../servicios/usuario.service";
 })
 export class UsuariosComponent implements OnInit {
   public usuarios;
-  constructor(private _usuarioService: UsuarioService) { }
+  public idUsuarioModel: Usuario;
+  constructor(private _usuarioService: UsuarioService) {
+    this.idUsuarioModel = new Usuario("","","","","","","");
+   }
 
   ngOnInit(): void {
     this.obtenerUsuarios();
@@ -19,10 +23,37 @@ export class UsuariosComponent implements OnInit {
     this._usuarioService.obtenerUsuarios().subscribe(
       response => {
         this.usuarios = response.usuariosEncontrados;
-        console.log(response.usuariosEncontrados[0]);
       },
       error => {
         console.log(<any>error);
+      }
+    )
+  }
+
+  obtenerUsuarioId(idUsuario){
+    this._usuarioService.obtenerUsuarioId(idUsuario).subscribe(
+      response=>{
+        this.idUsuarioModel = response.usuarioEncontrado;
+        console.log(response);
+
+      }
+    )
+  }
+
+  editarUsuario(){
+    this._usuarioService.editarUsaurio(this.idUsuarioModel).subscribe(
+      response=>{
+        console.log(response);
+        this.obtenerUsuarios();
+      }
+    )
+  }
+
+  eliminarUsuario(idUsuario){
+    this._usuarioService.eliminarUsuario(idUsuario).subscribe(
+      response=>{
+        console.log(response);
+        this.obtenerUsuarios();
       }
     )
   }

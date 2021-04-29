@@ -2,7 +2,7 @@ export class Encuesta{
   constructor(
     public _id: String,
     public titulo: String,
-    public descipcion: String,
+    public descripcion: String,
     public opinion: {
       si: Number,
       no: Number,
