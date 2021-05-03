@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EncuestasComponent } from './componentes/encuestas/encuestas.component';
+import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle-encuesta.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EncuestasComponent } from './componentes/encuestas/encuestas.component'
     RegistroComponent,
     NavbarComponent,
     UsuariosComponent,
-    EncuestasComponent
+    EncuestasComponent,
+    DetalleEncuestaComponent
   ],
   imports: [
     BrowserModule,

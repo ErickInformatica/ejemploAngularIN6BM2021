@@ -10,11 +10,38 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-12 col-sm-4" *ngFor="let enc of encuestasModelGet">
+    <div class="col-xs-12 col-sm-4" *ngFor="let enc of encuestasModelGet; let i = index">
       <div class="card mb-3" style="max-width: 21rem;">
         <div class="card-header">{{ enc.titulo }}</div>
         <div class="card-body">
           <p class="card-text">{{ enc.descripcion }}</p>
+        </div>
+        <div class="card-footer text-center">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <!-- <button type="button" class="btn btn-primary" (click)="navegarDetalleEncuesta(enc._id)"><i
+                class="bi bi-back"></i></button> -->
+            <button type="button" class="btn btn-primary" [routerLink]="['/detalleEncuesta', enc._id]"><i
+                class="bi bi-back"></i></button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" [attr.data-bs-target]="'#acor'+i"
+              aria-expanded="false" [attr.aria-controls]="'acor'+i" (click)="obtenerEncuesta(enc._id)">
+              <i class="bi bi-chat-square-text"></i></button>
+            <button type="button" class="btn btn-primary">Right</button>
+          </div>
+        </div>
+      </div>
+      <div class="collapse" [id]="'acor'+i">
+        <div class="card card-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputTextoComentario" class="form-label">Texto Comentario</label>
+              <input type="text" class="form-control" id="inputTextoComentario" name="textoComentario"
+              #textoComentario ="ngModel" [(ngModel)]="modeloComentario.textoComentario">
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn-primary" data-bs-toggle="collapse" [attr.data-bs-target]="'#acor'+i"
+              (click)="agregarComentario()">Agregar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -34,20 +61,20 @@
         <form>
           <div class="mb-3">
             <label for="inputTitulo" class="form-label">Titulo</label>
-            <input type="text" class="form-control" id="inputTitulo" name="titulo"
-            #titulo="ngModel" [(ngModel)]="encuestasModelAdd.titulo">
+            <input type="text" class="form-control" id="inputTitulo" name="titulo" #titulo="ngModel"
+              [(ngModel)]="encuestasModelAdd.titulo">
           </div>
           <div class="mb-3">
             <label for="inputDescripcion" class="form-label">Descripcion</label>
-            <input type="text" class="form-control" id="inputDescripcion" name="descripcion"
-            #descripcion="ngModel" [(ngModel)]="encuestasModelAdd.descripcion">
+            <textarea class="form-control" id="inputDescripcion" rows="3" name="descripcion" #descripcion="ngModel"
+              [(ngModel)]="encuestasModelAdd.descripcion"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-        (click)="agregarEncuestas()">Agregar</button>
+          (click)="agregarEncuestas()">Agregar</button>
       </div>
     </div>
   </div>
