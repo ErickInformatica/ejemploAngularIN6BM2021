@@ -17,6 +17,16 @@
           <textarea class="form-control" id="inputDescripcion" rows="3" name="descripcion" #descripcion="ngModel"
             [(ngModel)]="encuestaModel.descripcion" disabled></textarea>
         </div>
+
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action" aria-current="true" *ngFor="let enc of encuestaModel.listaComentarios">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ enc.idUsuarioComentario.usuario }}</h5>
+              <small>3 days ago</small>
+            </div>
+            <p class="mb-1">{{ enc.textoComentario}}</p>
+          </a>
+        </div>
       </form>
     </div>
   </div>
