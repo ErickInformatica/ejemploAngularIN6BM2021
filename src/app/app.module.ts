@@ -13,6 +13,10 @@ import { CommonModule } from '@angular/common';
 import { EncuestasComponent } from './componentes/encuestas/encuestas.component';
 import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle-encuesta.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment.prod';
+import { CiudadesComponent } from './componentes/ciudades/ciudades.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +25,16 @@ import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle
     NavbarComponent,
     UsuariosComponent,
     EncuestasComponent,
-    DetalleEncuestaComponent
+    DetalleEncuestaComponent,
+    CiudadesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    AngularFireModule.initializeApp(environment.firebaseConfiguracion)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "in6bm-2021-firebase": {
+      "hosting": {
+        "ejemploAngularIN6BM2021": [
+          "in6bm-2021-firebase"
+        ]
+      }
+    }
+  }
+}

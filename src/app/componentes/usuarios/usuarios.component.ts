@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/modelos/usuario.model';
 import { UsuarioService } from "../../servicios/usuario.service";
+declare var $: any;
 
 @Component({
   selector: 'app-usuarios',
@@ -45,6 +46,8 @@ export class UsuariosComponent implements OnInit {
       response=>{
         console.log(response);
         this.obtenerUsuarios();
+        $('#modalEditarUsuario').modal('hide');
+
       }
     )
   }

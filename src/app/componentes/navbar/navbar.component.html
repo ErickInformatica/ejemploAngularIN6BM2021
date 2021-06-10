@@ -18,6 +18,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/encuestas" routerLinkActive="active">Encuestas</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ciudades" routerLinkActive="active">Ciudades</a>
+        </li>
       </ul>
       <div class="d-flex">
         <a class="nav-link" *ngIf="_usuarioService.getIdentidad()"> {{ _usuarioService.getIdentidad().usuario }} </a>
