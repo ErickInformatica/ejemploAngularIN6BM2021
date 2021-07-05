@@ -1,4 +1,5 @@
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregarCanvas" aria-controls="agregarCanvas">
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#agregarCanvas"
+  aria-controls="agregarCanvas">
   Agregar
 </button>
 
@@ -10,10 +11,10 @@
       </div>
       <div class="card-body">
         <p class="card-text">Habitantes: {{ ciud.data.habitantes }}</p>
-        <button class="btn btn-primary" (click)="obtenerCiudadPorId(ciud.id)" data-bs-toggle="offcanvas" data-bs-target="#editarCanvas"
-        aria-controls="editarCanvas">Editar</button>
-        <button class="btn btn-primary" (click)="obtenerCiudadPorId(ciud.id)" data-bs-toggle="offcanvas" data-bs-target="#eliminarCanvas"
-        aria-controls="editarCanvas">Eliminar</button>
+        <button class="btn btn-primary" (click)="obtenerCiudadPorId(ciud.id)" data-bs-toggle="offcanvas"
+          data-bs-target="#editarCanvas" aria-controls="editarCanvas">Editar</button>
+        <button class="btn btn-primary" (click)="obtenerCiudadPorId(ciud.id)" data-bs-toggle="offcanvas"
+          data-bs-target="#eliminarCanvas" aria-controls="editarCanvas">Eliminar</button>
       </div>
     </div>
   </div>
@@ -29,16 +30,27 @@
     <form>
       <div class="mb-3">
         <label for="inputNombreCiudad" class="form-label">Nombre Ciudad</label>
-        <input type="text" class="form-control" id="inputNombreCiudad" name="nombreCiudad"
-        #nombreCiudad="ngModel" [(ngModel)]="ciudadesModel.nombreCiudad">
+        <input type="text" class="form-control" id="inputNombreCiudad" name="nombreCiudad" #nombreCiudad="ngModel"
+          [(ngModel)]="ciudadesModel.nombreCiudad">
       </div>
       <div class="mb-3">
         <label for="inputHabitantes" class="form-label">Habitantes</label>
-        <input type="text" class="form-control" id="inputHabitantes" name="habitantes"
-        #habitantes="ngModel" [(ngModel)]="ciudadesModel.habitantes">
+        <input type="text" class="form-control" id="inputHabitantes" name="habitantes" #habitantes="ngModel"
+          [(ngModel)]="ciudadesModel.habitantes">
       </div>
 
-      <button class="btn btn-primary" (click)="agregarCiudades()" data-bs-dismiss="offcanvas">Guardar Ciudad</button>
+      <!-- Input File Image -->
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Subir Imagen Ciudad</label>
+        <input class="form-control" type="file" id="formFile" (change)="subirImagenInput($event)">
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0"
+          aria-valuemax="100" [style.width.%]="porcentajeArchivo|async|number: '1.2-2'">
+          {{porcentajeArchivo|async|number: '1.2-2'}}%
+        </div>
+      </div>
+      <button class="btn btn-primary" (click)="subirImagen()">Guardar Ciudad</button>
     </form>
   </div>
 </div>
@@ -54,16 +66,17 @@
     <form>
       <div class="mb-3">
         <label for="inputNombreCiudad" class="form-label">Nombre Ciudad</label>
-        <input type="text" class="form-control" id="inputNombreCiudad" name="nombreCiudad"
-        #nombreCiudad="ngModel" [(ngModel)]="ciudadId.nombreCiudad">
+        <input type="text" class="form-control" id="inputNombreCiudad" name="nombreCiudad" #nombreCiudad="ngModel"
+          [(ngModel)]="ciudadId.nombreCiudad">
       </div>
       <div class="mb-3">
         <label for="inputHabitantes" class="form-label">Habitantes</label>
-        <input type="text" class="form-control" id="inputHabitantes" name="habitantes"
-        #habitantes="ngModel" [(ngModel)]="ciudadId.habitantes">
+        <input type="text" class="form-control" id="inputHabitantes" name="habitantes" #habitantes="ngModel"
+          [(ngModel)]="ciudadId.habitantes">
       </div>
 
-      <button class="btn btn-primary" (click)="editarCiudad(ciudadId.id)" data-bs-dismiss="offcanvas">Editar Ciudad</button>
+      <button class="btn btn-primary" (click)="editarCiudad(ciudadId.id)" data-bs-dismiss="offcanvas">Editar
+        Ciudad</button>
     </form>
   </div>
 </div>
@@ -75,9 +88,10 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-      <p>¿Se encuentra seguro de eliminar la Ciudad: {{ ciudadId.nombreCiudad }} ?</p>
+    <p>¿Se encuentra seguro de eliminar la Ciudad: {{ ciudadId.nombreCiudad }} ?</p>
 
-      <button class="btn btn-primary" (click)="eliminarCiudad(ciudadId.id)" data-bs-dismiss="offcanvas">Eliminar Ciudad</button>
+    <button class="btn btn-primary" (click)="eliminarCiudad(ciudadId.id)" data-bs-dismiss="offcanvas">Eliminar
+      Ciudad</button>
 
   </div>
 </div>

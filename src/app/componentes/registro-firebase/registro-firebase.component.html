@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <h1>Registro Firebase</h1>
+      <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" #email="ngModel"
+          [(ngModel)]="usuarioFirebase.email">
+          <div id="emailHelp" class="form-text">No compartas tus credenciales con nadie.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" #password="ngModel"
+          [(ngModel)]="usuarioFirebase.password">
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-warning" (click)="registro()">Registrar Usuario</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -12,10 +12,14 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EncuestasComponent } from './componentes/encuestas/encuestas.component';
 import { DetalleEncuestaComponent } from './componentes/detalle-encuesta/detalle-encuesta.component';
-
-import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment.prod';
 import { CiudadesComponent } from './componentes/ciudades/ciudades.component';
+import { LoginFirebaseComponent } from './componentes/login-firebase/login-firebase.component';
+import { RegistroFirebaseComponent } from './componentes/registro-firebase/registro-firebase.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage"
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { CiudadesComponent } from './componentes/ciudades/ciudades.component';
     UsuariosComponent,
     EncuestasComponent,
     DetalleEncuestaComponent,
-    CiudadesComponent
+    CiudadesComponent,
+    LoginFirebaseComponent,
+    RegistroFirebaseComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +40,9 @@ import { CiudadesComponent } from './componentes/ciudades/ciudades.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
-    AngularFireModule.initializeApp(environment.firebaseConfiguracion)
+    AngularFireModule.initializeApp(environment.firebaseConfiguracion),
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
